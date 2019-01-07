@@ -1,0 +1,3 @@
+{{ $file := .Get "file" | readFile | markdownify }}
+{{ $class := .Get "class" }}
+{{ (print "<div class=" $class ">" $file "</div>") | safeHTML }}

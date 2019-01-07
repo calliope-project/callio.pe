@@ -1,0 +1,14 @@
+ccgt:
+    essentials:
+        name: 'Combined Cycle Gas Power Plant'
+        color: '#FDC97D'
+        parent: 'supply'
+        carrier_out: 'electricity'
+    constraints:
+        resource: inf
+        energy_cap_max: 40000  # kW
+        energy_ramping: 0.8
+    costs:
+        monetary:
+            energy_cap: 750  # USD per kW
+            om_con: 0.02  # USD per kWh
