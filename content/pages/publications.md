@@ -6,6 +6,8 @@ This page lists the publicly available work based on Calliope which we are aware
 
 ### Peer-reviewed publications
 
+Francesco Lombardi, Matteo Vincenzo Rocco and Emanuela Colombo (2019). A multi-layer energy modelling methodology to assess the impact of heat-electricity integration strategies: the case of the residential cooking sector in Italy. *Energy*, [doi: 10.1016/j.energy.2019.01.004](https://doi.org/10.1016/j.energy.2019.01.004)
+
 Bryn Pickering and Ruchi Choudhary (2019). District energy system optimisation under uncertain demand: Handling data-driven stochastic profiles. *Applied Energy* 236, 1138–1157. [doi: 10.1016/j.apenergy.2018.12.037](https://doi.org/10.1016/j.apenergy.2018.12.037)
 
 Bryn Pickering and Ruchi Choudhary (2018). Mitigating risk in district-level energy investment decisions by scenario optimisation, in: *Proceedings of BSO 2018*. Presented at the 4th Building Simulation and Optimization Conference, Cambridge, UK, pp. 38–45. [PDF in Conference proceedings](http://www.ibpsa.org/proceedings/BSO2018/1B-1.pdf)
