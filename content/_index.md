@@ -17,6 +17,6 @@ introbar_content: intro-headless.md
     </div>
     <div class="hl-row hl-row-odd">
         <div class="hl-label"><h4>Completely free and open</h4>Calliope is completely freely and openly available under an Apache 2.0 license. By extensively using automated tests, it provides a solid foundation on which to build transparent and reproducible energy system models. <a href="https://github.com/calliope-project/calliope">Development happens in the open on GitHub</a>.</div>
-        <div class="hl-img right"><img src="/images/opensource.png" width="500"></div>
+        <div class="hl-img right"><img src="/images/opensource.png" width="145"></div>
     </div>
 </div>
