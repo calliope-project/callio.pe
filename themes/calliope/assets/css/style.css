@@ -317,13 +317,13 @@ main h1 a, main h1 a:hover, main h2 a, main h2 a:hover, main h3 a, main h3 a:hov
     color:  #555555;
 }
 
-.post a.readmore-link {
+/* .post a.readmore-link {
     display: inline-block;
     color: #ffffff;
     background-color: #000000;
     padding: 0 10px;
     margin-left: 10px;
-}
+} */
 
 .container {
     max-width: 1250px;

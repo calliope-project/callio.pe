@@ -13,15 +13,11 @@
         {{ .Title}}{{ if ne .Title .Site.Title }} | {{ .Site.Title }}{{ end }}
       {{ end }}
     </title>
-    <script type="text/javascript" src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+    <script async type="text/javascript" src="https://cdn.plot.ly/plotly-latest.min.js" id="plotlyjs"></script>
+    <link async rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ $style.Permalink }}" integrity="{{ $style.Data.Integrity }}">
     <link rel="shortcut icon" href="/favicon.ico">
-    {{ if .RSSLink }}
-    <link href="{{ .RSSLink }}" rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}">
-    {{ else }}
-    <link href="/news/index.xml" rel="alternate" type="application/rss+xml" title="News">
-    {{ end }}
+    <link href="/news/index.xml" rel="alternate" type="application/rss+xml" title="Calliope News">
     {{ partial "head-custom.html" . }}
   </head>
   <body>
