@@ -1,5 +1,6 @@
 ---
 title: "Support"
+description: "Description of how to get up and running with Calliope and how to get support."
 ---
 
 ### Quick start

@@ -14,6 +14,8 @@ permalinks:
   news: /news/:year/:month/:title
 
 params:
+  description: "Calliope is a free and open-source (Apache 2.0 licensed) tool that makes it easy to build energy system models at scales ranging from urban districts to entire continents."
+
   # Main sections (currently used for the recent posts in the sidebar)
   mainSections: ["news"]
 

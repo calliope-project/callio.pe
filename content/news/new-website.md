@@ -1,5 +1,6 @@
 ---
 title: "New year, new website"
+description: "We have a new logo and website!"
 date: 2019-01-07T15:00:02+02:00
 ---
 

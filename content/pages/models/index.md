@@ -1,5 +1,6 @@
 ---
 title: "Model Gallery"
+description: "A gallery of models built with Calliope."
 ---
 
 <div class="card-columns">
