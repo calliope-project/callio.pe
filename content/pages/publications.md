@@ -7,6 +7,8 @@ This page lists the publicly available work based on Calliope which we are aware
 
 ### Peer-reviewed publications
 
+Adriaan Hilbers, David Brayshaw and Axel Gandy (2019). Importance subsampling: improving power system planning under climate-based uncertainty. *Applied Energy*, [doi: 10.1016/j.apenergy.2019.04.110](https://doi.org/10.1016/j.apenergy.2019.04.110)
+
 Francesco Lombardi, Matteo Vincenzo Rocco and Emanuela Colombo (2019). A multi-layer energy modelling methodology to assess the impact of heat-electricity integration strategies: the case of the residential cooking sector in Italy. *Energy*, [doi: 10.1016/j.energy.2019.01.004](https://doi.org/10.1016/j.energy.2019.01.004)
 
 Bryn Pickering and Ruchi Choudhary (2019). District energy system optimisation under uncertain demand: Handling data-driven stochastic profiles. *Applied Energy* 236, 1138–1157. [doi: 10.1016/j.apenergy.2018.12.037](https://doi.org/10.1016/j.apenergy.2018.12.037)
