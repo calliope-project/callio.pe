@@ -7,6 +7,8 @@ This page lists the publicly available work based on Calliope which we are aware
 
 ### Peer-reviewed publications
 
+C. Del Pero, F. Leonforte, F. Lombardi, N. Stevanato, J. Barbieri, N. Aste, H. Huerto, E. Colombo (2019). Modelling Of An Integrated Multi-Energy System For A Nearly Zero Energy Smart District. 2019 International Conference on Clean Electrical Power (ICCEP) (pp. 246–252). [doi: 10.1109/ICCEP.2019.8890129](https://doi.org/10.1109/ICCEP.2019.8890129)
+
 Adriaan Hilbers, David Brayshaw and Axel Gandy (2019). Importance subsampling: improving power system planning under climate-based uncertainty. *Applied Energy*, [doi: 10.1016/j.apenergy.2019.04.110](https://doi.org/10.1016/j.apenergy.2019.04.110)
 
 Francesco Lombardi, Matteo Vincenzo Rocco and Emanuela Colombo (2019). A multi-layer energy modelling methodology to assess the impact of heat-electricity integration strategies: the case of the residential cooking sector in Italy. *Energy*, [doi: 10.1016/j.energy.2019.01.004](https://doi.org/10.1016/j.energy.2019.01.004)
