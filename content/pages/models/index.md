@@ -8,7 +8,7 @@ description: "A gallery of models built with Calliope."
     <img class="card-img-top" src="model-bangalore.png">
     <div class="card-body">
       <h3 class="card-title">Bangalore</h3>
-      <p class="card-text">Bangalore-Calliope models an illustrative district in Bangalore, India. The model is focused on decision-making under uncertainty by using scenario optimisation, and used so far in two peer-reviewed publications.</p>
+      <p class="card-text">Bangalore-Calliope models an illustrative district in Bangalore, India. The model is focused on decision-making under uncertain demand and national grid availability, by using scenario optimisation.</p>
       <p class="card-text"><small class="text-muted"><a href="https://github.com/brynpickering/bangalore-calliope">Available on GitHub.</a></small></p>
     </div>
   </div>
@@ -16,7 +16,7 @@ description: "A gallery of models built with Calliope."
     <img class="card-img-top" src="model-cambridge.png">
     <div class="card-body">
       <h3 class="card-title">Cambridge</h3>
-      <p class="card-text">Cambridge-Calliope models a new development at the district level in Cambridge (UK). It focuses on optimising system design under uncertain demand in an in-review study.</p>
+      <p class="card-text">Cambridge-Calliope models a new development at the district level in Cambridge (UK). It focuses on optimising system design under uncertain demand.</p>
       <p class="card-text"><small class="text-muted"><a href="https://github.com/brynpickering/cambridge-calliope">Available on GitHub.</a></small></p>
     </div>
   </div>
