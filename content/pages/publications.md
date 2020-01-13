@@ -7,6 +7,8 @@ This page lists the publicly available work based on Calliope which we are aware
 
 ### Peer-reviewed publications
 
+Simon Morgenthaler, Wilhelm Kuckshinrichs and Dirk Witthaut (2020). Optimal system layout and locations for fully renewable high temperature co-electrolysis. *Applied Energy*, [doi: 10.1016/j.apenergy.2019.114218](https://doi.org/10.1016/j.apenergy.2019.114218)
+
 C. Del Pero, F. Leonforte, F. Lombardi, N. Stevanato, J. Barbieri, N. Aste, H. Huerto, E. Colombo (2019). Modelling Of An Integrated Multi-Energy System For A Nearly Zero Energy Smart District. 2019 International Conference on Clean Electrical Power (ICCEP) (pp. 246–252). [doi: 10.1109/ICCEP.2019.8890129](https://doi.org/10.1109/ICCEP.2019.8890129)
 
 Adriaan Hilbers, David Brayshaw and Axel Gandy (2019). Importance subsampling: improving power system planning under climate-based uncertainty. *Applied Energy*, [doi: 10.1016/j.apenergy.2019.04.110](https://doi.org/10.1016/j.apenergy.2019.04.110)
