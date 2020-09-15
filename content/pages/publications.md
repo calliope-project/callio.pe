@@ -7,6 +7,10 @@ This page lists the publicly available work based on Calliope which we are aware
 
 ### Peer-reviewed publications
 
+Tim Tröndle, Johan Lilliestam, Stefano Marelli and Stefan Pfenninger (2020). Trade-offs between geographic scale, cost, and infrastructure requirements for fully renewable electricity in Europe. *Joule*. [doi: 10.1016/j.joule.2020.07.018](https://doi.org/10.1016/j.joule.2020.07.018)
+
+Tim Tröndle (2020). Supply-side options to reduce land requirements of fully renewable electricity in Europe. *PLOS ONE*. [doi: 10.1371/journal.pone.0236958](https://doi.org/10.1371/journal.pone.0236958)
+
 Francesco Lombardi, Bryn Pickering, Emanuela Colombo and Stefan Pfenninger (2020). Policy decision support for renewables deployment through spatially explicit practically optimal alternatives. *Joule*, [doi: 10.1016/j.joule.2020.08.002](https://doi.org/10.1016/j.joule.2020.08.002)
 
 Francesco Lombardi, Sylvain Quoilin and Emanuela Colombo (2020). Modelling distributed Power-to-Heat technologies as a flexibility option for smart heat-electricity integration. *Proceedings of the 33rd ECOS Conference*, Osaka, Japan, July 2020. [PDF link](https://www.researchgate.net/publication/342961468_Modelling_distributed_Power-to-Heat_technologies_as_a_flexibility_option_for_smart_heat-electricity_integration)
