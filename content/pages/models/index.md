@@ -60,4 +60,12 @@ description: "A gallery of models built with Calliope."
       <p class="card-text"><small class="text-muted"><a href="https://github.com/SESAM-Polimi/Calliope-Kenya">Available on GitHub.</a></small></p>
     </div>
   </div>
+    <div class="card">
+    <img class="card-img-top" src="model-italy.png">
+    <div class="card-body">
+      <h3 class="card-title">Italy</h3>
+      <p class="card-text">Calliope-Italy is a model of the Italian energy system adopting a double spatial scale: renewable and heat generation is modelled across 20 regions based on region-specific weather conditions and potentials, whilst dispatchable capacity and transmission bottlenecks are grouped by the 6 bidding zones of the Italian electricity market. </p>
+      <p class="card-text"><small class="text-muted"><a href="https://github.com/FLomb/Calliope-Italy">Available on GitHub.</a></small></p>
+    </div>
+  </div>
 </div>
