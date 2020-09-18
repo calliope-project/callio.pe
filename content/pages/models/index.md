@@ -25,7 +25,7 @@ description: "A gallery of models built with Calliope."
     <div class="card-body">
       <h3 class="card-title">Europe</h3>
       <p class="card-text">Euro-Calliope is a model of the European power system that can be built as a version resolved to individual countries or to 497 first-level administrative subdivisions, with hourly generation and demand data.</p>
-      <p class="card-text"><small class="text-muted"><a href="https://github.com/timtroendle/euro-calliope">Available on GitHub.</a></small></p>
+      <p class="card-text"><small class="text-muted"><a href="https://github.com/calliope-project/euro-calliope">Available on GitHub.</a></small></p>
     </div>
   </div>
   <div class="card">
@@ -41,7 +41,7 @@ description: "A gallery of models built with Calliope."
     <div class="card-body">
       <h3 class="card-title">UK</h3>
       <p class="card-text">UK-Calliope is a 20-zone model of the power system of Great Britain (England, Scotland, Wales), with 20 years of validated hourly wind and PV generation data, used in several peer-reviewed publications.</p>
-      <p class="card-text"><small class="text-muted"><a href="https://github.com/sjpfenninger/uk-calliope">Available on GitHub.</a></small></p>
+      <p class="card-text"><small class="text-muted"><a href="https://github.com/calliope-project/uk-calliope">Available on GitHub.</a></small></p>
     </div>
   </div>
   <div class="card">
