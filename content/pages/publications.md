@@ -3,7 +3,7 @@ title: "Publications"
 description: "A list of research that used Calliope, with a focus on academic publications."
 ---
 
-This page lists the publicly available work based on Calliope which we are aware of. [Contact us](mailto:stefan.pfenninger@usys.ethz.ch) if you have a publication that you would like to be listed here.
+This page lists the publicly available work based on Calliope which we are aware of. [Add your publications directly with a pull request](https://github.com/calliope-project/callio.pe/edit/master/content/pages/publications.md) or [contact us](mailto:stefan.pfenninger@usys.ethz.ch) if you have a publication that you would like to be listed here.
 
 ### Peer-reviewed publications
 
