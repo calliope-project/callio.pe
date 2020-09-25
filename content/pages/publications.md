@@ -7,6 +7,8 @@ This page lists the publicly available work based on Calliope which we are aware
 
 ### Peer-reviewed publications
 
+Simon Morgenthaler, Christopher Ball, Jan Koj, Wilhelm Kuckshinrichs and Dirk Witthaut (2020). Site-dependent levelized cost assessment for fully renewable Power-to-Methane systems. *Energy Conversion and Management*. [doi: 10.1016/j.enconman.2020.113150](https://doi.org/10.1016/j.enconman.2020.113150)
+
 Tim Tröndle, Johan Lilliestam, Stefano Marelli and Stefan Pfenninger (2020). Trade-offs between geographic scale, cost, and infrastructure requirements for fully renewable electricity in Europe. *Joule*. [doi: 10.1016/j.joule.2020.07.018](https://doi.org/10.1016/j.joule.2020.07.018)
 
 Tim Tröndle (2020). Supply-side options to reduce land requirements of fully renewable electricity in Europe. *PLOS ONE*. [doi: 10.1371/journal.pone.0236958](https://doi.org/10.1371/journal.pone.0236958)
