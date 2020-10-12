@@ -22,4 +22,4 @@ Finally, from the next minor release, we have decided to deprecate plotting; it 
 
 The list of fixes and minor improvements is available in the [full changelog](https://calliope.readthedocs.io/en/v0.6.6-post1/history.html).
 
-[^1]: Due to initial PyPI packaging issues, the version available is technically `0.6.6-patch1`, but installing using `0.6.6` or without version specification will automatically install this patched version.
+[^1]: Due to initial PyPI packaging issues, the version available is technically `0.6.6-post1`, but installing using `0.6.6` or without version specification will automatically install this patched version.
