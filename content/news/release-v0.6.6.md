@@ -20,6 +20,6 @@ We have also updated some dependencies in this version, including pandas (now >v
 
 Finally, from the next minor release, we have decided to deprecate plotting; it will instead be available as a seperate module. This will allow us to develop a more general energy systems plotting module. *Warning*: although still available in 0.6.6, the current plotting functionality has not been updated in several years and is now also untested.
 
-The long list of fixes and minor improvements is available in the [full changelog](https://calliope.readthedocs.io/en/v0.6.6-post1/history.html).
+The list of fixes and minor improvements is available in the [full changelog](https://calliope.readthedocs.io/en/v0.6.6-post1/history.html).
 
 [^1]: Due to initial PyPI packaging issues, the version available is technically `0.6.6-patch1`, but installing using `0.6.6` or without version specification will automatically install this patched version.
