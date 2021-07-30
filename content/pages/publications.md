@@ -7,6 +7,8 @@ This page lists the publicly available work based on Calliope which we are aware
 
 ### Peer-reviewed publications
 
+Priyanka Laha and Basab Chakraborty (2021). Cost optimal combinations of storage technologies for maximizing renewable integration in Indian power system by 2040: Multi-region approach. *Renewable Energy*. [doi: 10.1016/j.renene.2021.07.027](https://doi.org/10.1016/j.renene.2021.07.027)
+
 Bryn Pickering and Ruchi Choudhary (2021). Quantifying resilience in energy systems with out-of-sample testing. *Applied Energy*. [doi: 10.1016/j.apenergy.2021.116465](https://doi.org/10.1016/j.apenergy.2021.116465)
 
 Guilherme Pontes Luz and Rodrigo Amaro e Silva (2021). Modeling Energy Communities with Collective Photovoltaic Self-Consumption: Synergies between a Small City and a Winery in Portugal. *Energies*. [doi: 10.3390/en14020323](https://doi.org/10.3390/en14020323)
