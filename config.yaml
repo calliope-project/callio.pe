@@ -5,8 +5,15 @@ theme: "calliope"
 
 pygmentsCodeFences: true
 pygmentsUseClasses: true
-# pygmentsStyle: "friendly"
+pygmentsStyle: friendly
 rssLimit: 10
+paginate: 5
+sectionPagesMenu: shadow
+
+markup:
+    goldmark:
+        renderer:
+            unsafe: true
 
 permalinks:
   pages: /:title
@@ -27,13 +34,11 @@ params:
 
   sidebar:
     showRecent: true  # Whether to show the recent posts or not (default: true)
-    showTaxonomy: false  # Whether to show the taxonomies or not (default: true)
     num_recent_posts: 3  # How many posts to show on the sidebar (Default: 5)
 
 outputs:
     home: ["HTML"]  # Default includes RSS
     section: ["HTML", "RSS"]
-    taxonomy: ["HTML", "RSS"]
 
 menu:
   main:
