@@ -88,7 +88,7 @@ These are some of the models built with Calliope by the core Calliope team and i
 * **Calliope-Italy**. A model of the Italian energy system adopting a double spatial scale: renewable and heat generation is modelled across 20 regions based on region-specific weather conditions and potentials, whilst dispatchable capacity and transmission bottlenecks are grouped by the 6 bidding zones of the Italian electricity market. [→ GitHub](https://github.com/FLomb/Calliope-Italy).
 * **UK-Calliope**. A 20-zone model of the power system of Great Britain (England, Scotland, Wales), with 20 years of validated hourly wind and PV generation data, used in several peer-reviewed publications. [→ GitHub](https://github.com/calliope-project/uk-calliope).
 * **SA-Calliope**. Used in a [peer-reviewed paper](https://doi.org/10.1016/j.energy.2015.04.077) comparing concentrating solar power (CSP) and nuclear as baseload providers in South Africa. It contains commercially licensed data and is thus not freely and publicly available. [Email for access and more information](mailto:s.pfenninger@tudelft.nl).
-* **Cabridge-Calliope**. Models a new development at the district level in Cambridge (UK). It focuses on optimising system design under uncertain demand. [→ GitHub](https://github.com/brynpickering/cambridge-calliope)
+* **Cambridge-Calliope**. Models a new development at the district level in Cambridge (UK). It focuses on optimising system design under uncertain demand. [→ GitHub](https://github.com/brynpickering/cambridge-calliope)
 * **Calliope-Kenya**. Calliope-Kenya is a five-region model of Kenya developed at Politecnico di Milano. [→ GitHub](https://github.com/SESAM-Polimi/Calliope-Kenya).
 
 ### Publications
