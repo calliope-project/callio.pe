@@ -14,6 +14,10 @@ markup:
     goldmark:
         renderer:
             unsafe: true
+        parser:
+            attribute:
+                block: true
+                title: true
 
 permalinks:
   pages: /:title
@@ -43,14 +47,14 @@ outputs:
 menu:
   main:
   - identifier: models
-    name: Model Gallery
-    title: Model Gallery
-    url: /model-gallery/
+    name: Research
+    title: Research
+    url: /research/
     weight: 30
-  - identifier: publications
-    name: Publications
-    title: Publications
-    url: /publications/
+  - identifier: partners-and-team
+    name: Partners and team
+    title: Partners and team
+    url: /partners-and-team/
     weight: 40
   - identifier: support
     name: Support

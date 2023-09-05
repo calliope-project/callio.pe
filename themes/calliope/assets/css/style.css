@@ -518,3 +518,50 @@ i.fas {
 
     article .card-columns { column-count: 1; }
 }
+
+.pagination ul {
+    margin: 0;
+}
+
+.pagination ul li {
+    display: inline-block;
+}
+
+.pagination ul li::before {
+    content: "";
+    margin: 0;
+    width: 0;
+
+}
+
+div.box {
+    /* width: 100%; */
+    padding: 30px;
+    margin: 0 -30px 30px;
+    /* background: #ededed; */
+}
+
+div.grey, .grey {
+    background: #ededed;
+}
+
+.box p, .box ul {
+    margin-bottom: 0;
+}
+
+.box li {
+    margin-bottom: 0;
+}
+
+.partners-table {
+    max-width: 900px;
+}
+
+.partners-table img {
+    max-width: 200px;
+}
+
+.partners-table figure {
+    padding: 0;
+    margin: 10px 20px 10px 0;
+}

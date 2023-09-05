@@ -1,0 +1,4 @@
+{{ $color := .Get "color" | default "grey" }}
+<div class="{{ $color }} box">
+{{ .Inner }}
+</div>
