@@ -93,7 +93,7 @@ These are some of the models built with Calliope by the core Calliope team and i
 
 ### Publications
 
-{{% box color="grey" %}} https://github.com/calliope-project/callio.pe/edit/master/content/pages/research/index.md 
+{{% box color="grey" %}}
 This section lists the publicly available work based on Calliope which we are aware of. [Add your publications directly with a pull request](https://github.com/calliope-project/callio.pe/edit/master/content/pages/research/index.md) or [contact us](mailto:s.pfenninger@tudelft.nl) if you have a publication that you would like to be listed here.
 {{% / box %}}
 
