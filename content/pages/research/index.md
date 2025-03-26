@@ -94,7 +94,7 @@ These are some of the models built with Calliope by the core Calliope team and i
 ### Publications
 
 {{% box color="grey" %}}
-This section lists the publicly available work based on Calliope which we are aware of. [Add your publications directly with a pull request](https://github.com/calliope-project/callio.pe/edit/master/content/pages/research.md) or [contact us](mailto:s.pfenninger@tudelft.nl) if you have a publication that you would like to be listed here.
+This section lists the publicly available work based on Calliope which we are aware of. [Add your publications directly with a pull request](https://github.com/calliope-project/callio.pe/edit/master/content/pages/research/index.md) or [contact us](mailto:s.pfenninger@tudelft.nl) if you have a publication that you would like to be listed here.
 {{% / box %}}
 
 Priyanka Laha and Basab Chakraborty (2021). Cost optimal combinations of storage technologies for maximizing renewable integration in Indian power system by 2040: Multi-region approach. *Renewable Energy*. [doi: 10.1016/j.renene.2021.07.027](https://doi.org/10.1016/j.renene.2021.07.027)
