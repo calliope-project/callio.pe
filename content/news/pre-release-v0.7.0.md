@@ -14,7 +14,7 @@ Some of the major new features include:
 * Ability to [load any data from tabular files](https://calliope.readthedocs.io/en/latest/creating/data_tables/), not just time series.
 * [Direct interface to the Gurobi API](https://calliope.readthedocs.io/en/latest/advanced/backend_choice/): This speeds up model generation and requires less memory.
 * Improvements and streamlining for the terminology and to component definitions (for example, all technologies can now include a storage buffer).
-* Visualisation has been removed from Calliope itself; instead we have a dedicated interactive visualisation tool called [Calligraph](https://github.com/calliope-project/calligraph) which is also available as a pre-release.
+* Visualisation has been removed from Calliope itself; instead we have a dedicated interactive visualisation tool called [Calligraph](https://github.com/calliope-project/calligraph) which is also available as a pre-release. This is a preview of Calligraph in action: {{< video src="videos/calligraph.mp4" width="800px" >}}
 
 Much of the internal code has been re-built around these new features. In this process, we have also made a large number of smaller changes, for example, an [easier way to access shadow prices](https://calliope.readthedocs.io/en/latest/advanced/shadow_prices/).
 

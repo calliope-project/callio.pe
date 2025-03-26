@@ -7,7 +7,8 @@ pygmentsCodeFences: true
 pygmentsUseClasses: true
 pygmentsStyle: friendly
 rssLimit: 10
-paginate: 5
+pagination:
+  pagerSize: 5
 sectionPagesMenu: shadow
 
 markup:
