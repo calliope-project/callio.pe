@@ -1,0 +1,247 @@
+/* Dark mode, following the operating system. No toggle: the site has one
+ * script and it is not going to be a theme switcher.
+ *
+ * Everything lives in this one file rather than being threaded through the
+ * other stylesheets as custom properties. That would be the tidier structure,
+ * but it would mean touching every rule in a vendored theme plus four project
+ * sheets, and a mistake there breaks light mode too. Here the worst case is
+ * that dark mode is wrong and light mode is untouched.
+ *
+ * Inlined last, so it wins on order wherever specificity ties.
+ */
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg: #16181d;
+        --bg-raised: #1e2128;
+        --bg-sunken: #101216;
+        --text: #dfe3ea;
+        --text-dim: #9aa2b1;
+        --rule: #313640;
+        --rule-strong: #454c59;
+        --indigo: #8fa4e0;
+        --terracotta: #d99182;
+    }
+
+    html {
+        /* Form controls, scrollbars and the like follow this. */
+        color-scheme: dark;
+    }
+
+    body {
+        background-color: var(--bg);
+        color: var(--text);
+    }
+
+    /* --- header --- */
+
+    header.site-header {
+        background-color: var(--bg);
+        border-bottom-color: var(--rule);
+    }
+
+    header.site-header a,
+    .nav-bar .nav-item .nav-link:hover {
+        color: var(--text);
+    }
+
+    .nav-bar .nav-list-external .nav-link {
+        color: var(--text-dim);
+    }
+
+    .nav-bar .nav-item .nav-link:hover {
+        background-color: var(--bg-raised);
+    }
+
+    .nav-bar .nav-item.active .nav-link,
+    .nav-bar .nav-item.active .nav-link:hover {
+        color: #ffffff;
+        background-color: var(--rule-strong);
+    }
+
+    /* --- text and links --- */
+
+    h1, h2, h3, h4, h5, h6 {
+        color: var(--text);
+    }
+
+    main a,
+    main a:hover {
+        color: var(--text);
+        border-bottom-color: var(--rule-strong);
+    }
+
+    main h1 a, main h2 a, main h3 a, main h4 a {
+        color: var(--text);
+    }
+
+    code {
+        background-color: var(--bg-raised);
+        color: var(--text);
+    }
+
+    blockquote {
+        border-left-color: var(--rule);
+    }
+
+    /* --- the two boxes in the hero --- */
+
+    .intro-left {
+        background-color: #1c2233;
+        border-color: var(--indigo);
+    }
+
+    .intro-right {
+        background-color: #2a1f1d;
+        border-color: var(--terracotta);
+    }
+
+    .intro-bar a,
+    .intro-bar a:hover {
+        color: var(--text);
+        border-bottom-color: var(--rule-strong);
+    }
+
+    .intro-right .date {
+        color: var(--terracotta);
+    }
+
+    /* --- call-out boxes --- */
+
+    div.grey, .grey {
+        background-color: var(--bg-raised);
+        border-color: var(--rule);
+    }
+
+    div.accent {
+        background-color: #2a1f1d;
+        border-color: var(--terracotta);
+    }
+
+    .box h3 .fas {
+        color: var(--terracotta);
+    }
+
+    .section-note {
+        color: var(--text-dim);
+    }
+
+    /* --- example application cards --- */
+
+    /* The tints are near-white in light mode and have to invert here: the disc
+       and the pill sit *below* the card rather than above it, with the hue doing
+       the colouring. Only these three variables change; every rule that reads
+       them -- the rail, the disc, the pill, the hover fill, the hover border,
+       the focus ring -- follows on its own. See the `.kind-*` block in
+       showcase.css. */
+    .kind-research { --app-hue: #8fa4e0; --app-tint: #1d2231; --app-wash: #333a52; }
+    .kind-practice { --app-hue: #d99182; --app-tint: #2b1f1d; --app-wash: #41332e; }
+    .kind-teaching { --app-hue: #79bcc4; --app-tint: #16262a; --app-wash: #2a3d42; }
+
+    /* A step above the panel, not level with it: `div.grey` is also --bg-raised,
+       so left alone the cards are exactly the colour of the box they sit in and
+       only their hairline shows. Lifting the card rather than sinking the panel,
+       since the panel is shared with the rest of the page.
+
+       Shadows are all but invisible on a dark background, so the depth and the
+       lift need heavier ones than light mode uses. */
+    .application {
+        background-color: #2a2f3a;
+        border-color: var(--rule);
+        /* Order matters: `border-color` above resets all four sides, top rail
+           included, and this sheet is concatenated after showcase.css. */
+        border-top-color: var(--app-hue);
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 2px 8px rgba(0, 0, 0, 0.35);
+    }
+
+    .application:hover {
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+    }
+
+    .application-title {
+        color: var(--text);
+    }
+
+    .application-title:hover,
+    .application-title:focus {
+        color: var(--text);
+    }
+
+    /* A notch lighter than the --text-dim these share with the rest of the page:
+       the card is a raised surface and the hover wash lighter again, and the
+       shared value drops under 4.5:1 on both. */
+    .application-place,
+    .application-institutions {
+        color: #a2aab8;
+    }
+
+    .info {
+        background-color: var(--rule);
+        color: var(--text);
+    }
+
+    /* The hue is a light one here, so the glyph on it has to go dark. */
+    .info:hover,
+    .info:focus,
+    .info:focus-within {
+        background-color: var(--app-hue);
+        color: #16181d;
+    }
+
+    .info-popover {
+        background-color: var(--bg-raised);
+        border-color: var(--rule-strong);
+        color: var(--text);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .info-who,
+    .info-cite,
+    .info-links {
+        color: var(--text-dim);
+    }
+
+    /* --- contributors --- */
+
+    .contributor-id:hover,
+    .contributor-id:focus-visible {
+        background-color: var(--bg-raised);
+    }
+
+    .contributor .avatar {
+        background-color: var(--rule);
+    }
+
+    /* Terracotta at full strength would glare on a dark page, so the disc takes
+       the lighter tint and the glyph goes dark. */
+    .maintainer-mark {
+        background-color: var(--terracotta);
+        color: var(--bg-sunken);
+    }
+
+    /* --- code windows --- */
+
+    .highlight,
+    .code-window {
+        background-color: #0d1117;
+        border-color: var(--rule);
+    }
+
+    .code-title {
+        background-color: #161b22;
+        border-bottom-color: var(--rule);
+        color: var(--text-dim);
+    }
+
+    /* --- footer --- */
+
+    .site-footer {
+        color: var(--text-dim);
+    }
+
+    .site-footer a,
+    .site-footer a:hover {
+        color: var(--text-dim);
+        border-bottom-color: var(--rule-strong);
+    }
+}

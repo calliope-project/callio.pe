@@ -1,0 +1,454 @@
+/* The Showcase: the example applications on the home page, plus the section
+ * spacing that separates the page's parts.
+ *
+ * Everything here is deliberately self-contained: the showcase renders on the
+ * home page, which the theme wraps in .index-content rather than <article>, so
+ * the theme's article-scoped rules do not apply and cannot be relied on.
+ *
+ * Injected via layouts/partials/head-custom.html, which the theme's baseof.html
+ * already calls; the theme itself needs no changes.
+ */
+
+/* Example applications: one flat grid, four to a row, with the description and
+   the reference behind the info icon so eleven of them read as a glance rather
+   than a wall of text.
+
+   There are no group headings any more. The kind is a pill on the card, which
+   frees the entries to be interleaved -- so the first row shows research,
+   practice and teaching at once rather than three blocks of one colour. */
+
+/* Colour says what kind of thing this is, and the rail, the disc, the pill and
+   the hover border all read from these three. Two of them are the page's own
+   accents already, from the boxes in the hero.
+
+   The site otherwise avoids custom properties -- see the README -- because
+   threading them through a vendored theme is where that goes wrong. These are
+   scoped to this one component in this one file and referenced nowhere else,
+   which is a different proposition: the alternative is the same four values
+   repeated across a dozen rules here and again in dark.css, which is what was
+   here before and what let the two drift apart. */
+.kind-research { --app-hue: #4C62A7; --app-tint: #eaedf7; --app-wash: #f7f9ff; }
+.kind-practice { --app-hue: #9E4A3D; --app-tint: #f7ecea; --app-wash: #fdf7f6; }
+.kind-teaching { --app-hue: #2E6F7A; --app-tint: #e7f0f2; --app-wash: #f5fafb; }
+
+.application-list {
+    list-style: none;
+    margin-left: 0;
+    margin-bottom: 1rem;
+}
+
+/* Milligram draws list bullets with `main ul li::before`. */
+.application-list li::before {
+    content: none;
+}
+
+/* A quarter of the page wide at full width. The rail across the top is what
+   makes a row read as a set rather than four separate boxes, and it carries
+   the kind colour at a size the icon disc alone never did. */
+.application {
+    position: relative;
+    /* Icon beside the text rather than stacked above it: a row buys back the
+       line the stack would cost, and at this width the text column is still
+       wide enough for the title. */
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 1.2rem;
+    margin-bottom: 0;
+    /* Top padding is 2px short of the rest: the rail is 3px where the other
+       borders are 1px, and this keeps the content where it would otherwise sit. */
+    padding: 1rem 1.2rem 1.2rem;
+    background-color: #ffffff;
+    border: 1px solid #e1e1e1;
+    border-top: 3px solid var(--app-hue);
+    border-radius: 6px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04), 0 2px 8px rgba(0, 0, 0, 0.06);
+    line-height: 1.35;
+    cursor: pointer;
+    transition: border-color 0.12s ease-in-out, background-color 0.12s ease-in-out,
+        box-shadow 0.12s ease-in-out;
+}
+
+/* The whole box is the target, not the underlined words in it: at this size an
+   underline is noise, and a box that lights up says "clickable" more clearly.
+   The link is stretched over the box with a pseudo-element rather than by
+   wrapping everything in an <a>, which would swallow the info button and the
+   links inside its popover.
+
+   The card does not move. A transform here would also make it a stacking
+   context, which would trap the open popover inside it and let the cards after
+   it in the row paint over the parts that overhang -- so `.info` keeps working
+   against its neighbours only as long as nothing here creates one. Deepening
+   the shadow carries the hover on its own. */
+.application:hover {
+    border-color: var(--app-hue);
+    background-color: var(--app-wash);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08), 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.application:has(.application-title:focus-visible) {
+    outline: 2px solid var(--app-hue);
+    outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .application {
+        transition: none;
+    }
+}
+
+/* A tinted disc rather than a bare glyph, so the row has an anchor on the left
+   and the list reads as a set. The tint works because the card itself is white;
+   it would have vanished when these sat directly on the grey panel. Swapped for
+   an <img> when an entry has one. */
+.application-mark {
+    flex: 0 0 auto;
+    width: 4.2rem;
+    height: 4.2rem;
+    border-radius: 50%;
+    background-color: var(--app-tint);
+    color: var(--app-hue);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.application-mark .fas {
+    width: auto;
+    padding-right: 0;
+    font-size: 2rem;
+}
+
+.application-mark img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Pill and place, then title, then institutions: one column beside the icon. */
+.application-text {
+    flex: 1 1 auto;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+/* This line shares its right end with the info button, so it carries the
+   padding the title used to.
+
+   Centred rather than baseline-aligned: the place is ellipsised, and a flex
+   item with `overflow: hidden` has its baseline synthesized from the bottom
+   edge, which would drop it below the pill instead of lining up with it. */
+.application-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    min-width: 0;
+    padding-right: 2.4rem;
+}
+
+/* Filled, on the same footing as the tags on the model cards, but tinted with
+   the kind colour rather than grey -- it is the only thing left saying which
+   of the three groups an entry belongs to. */
+.application-kind {
+    flex: 0 0 auto;
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    line-height: 1.6;
+    padding: 0.1rem 0.6rem;
+    border-radius: 3px;
+    background-color: var(--app-tint);
+    color: var(--app-hue);
+}
+
+/* Plain text rather than a second pill: two filled shapes on one short line is
+   more than it can carry.
+
+   #6b6b6b, not the #777 used elsewhere for muted text: #777 is 4.48:1 on white,
+   which is already a hair under AA, and the hover wash pushes it to 4.22:1.
+   This clears 4.5:1 on the card and on all three washes. */
+.application-place {
+    font-size: 1.2rem;
+    color: #6b6b6b;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.application-title {
+    font-size: 1.6rem;
+    font-weight: 700;
+    line-height: 1.3;
+    color: #000000;
+    border-bottom: 0;
+}
+
+/* Grey and small: the point is to show at a glance who is doing this work,
+   without competing with the question each entry asks. Same #6b6b6b as the
+   place, and for the same reason -- the hover wash is what makes #777 fail. */
+.application-institutions {
+    font-size: 1.2rem;
+    line-height: 1.35;
+    color: #6b6b6b;
+}
+
+.application-title:hover,
+.application-title:focus {
+    color: #000000;
+    border-bottom: 0;
+}
+
+/* Stretches the link over the whole box. Sits above the box's own content but
+   below .info, so the info button and its popover stay clickable. */
+.application-title::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 6px;
+    z-index: 1;
+}
+
+/* --- the info popover ---
+ *
+ * No JavaScript: the popover is a child of the trigger and shown on :hover and
+ * :focus-within, so the pointer can travel into it without it closing and its
+ * links stay clickable. tabindex on the trigger makes it keyboard-reachable;
+ * the title beside it is a real link, so nothing is only available on hover.
+ */
+/* A round button in the box's corner rather than a bare glyph, so it reads as
+   something to point at. z-index puts it above the stretched link, which
+   otherwise covers the whole box and would swallow both it and its popover. */
+.info {
+    position: absolute;
+    z-index: 2;
+    top: 0.8rem;
+    right: 0.8rem;
+    width: 2.4rem;
+    height: 2.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: #f0f0f0;
+    color: #555;
+    cursor: help;
+    /* 1.4rem, not 1.5: the glyph's box is square and as wide as it is tall, so
+       at 15px in a 24px button it is centred on a half pixel in both axes and
+       lands visibly off-centre in the circle. 14px leaves a clean 5px ring. */
+    font-size: 1.4rem;
+    line-height: 1;
+    /* The z-index below is raised while open and dropped again only once the
+       popover has gone, so the two stay in step. */
+    transition: background-color 0.12s ease-in-out, color 0.12s ease-in-out,
+        z-index 0s linear 0.85s;
+}
+
+/* Every button sits at the same z-index, and the popover lives inside one of
+   them, so without lifting the open button above its neighbours their buttons
+   punch through the popover — they come later in the DOM and win the tie. */
+.info:hover,
+.info:focus,
+.info:focus-within {
+    z-index: 6;
+    background-color: var(--app-hue);
+    color: #ffffff;
+    outline: none;
+    transition: background-color 0.12s ease-in-out, color 0.12s ease-in-out,
+        z-index 0s linear 0s;
+}
+
+.info .fas {
+    width: auto;
+    padding-right: 0;
+}
+
+/* Hidden with visibility rather than display, so it can be kept alive on a
+   timer. Leaving the button starts a 700ms grace period before it goes:
+   without one, the gap between the button and the popover is a dead zone, the
+   pointer loses :hover while crossing it, and the links inside can never be
+   reached. Entering the popover -- a child of the trigger -- restores :hover
+   and cancels the countdown. No JavaScript: the delay is on the transition. */
+.info-popover {
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.15s ease-in-out 0.7s, visibility 0s linear 0.85s;
+    position: absolute;
+    z-index: 5;
+    left: auto;
+    right: -1rem;
+    top: 2.8rem;
+    width: min(32rem, 78vw);
+    padding: 1.2rem 1.4rem;
+    background-color: #ffffff;
+    border: 1px solid #e1e1e1;
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+    font-size: 1.4rem;
+    line-height: 1.5;
+    color: #333;
+    cursor: auto;
+    text-align: left;
+}
+
+.info:hover .info-popover,
+.info:focus .info-popover,
+.info:focus-within .info-popover {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 0.12s ease-in-out 0s, visibility 0s linear 0s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .info-popover {
+        transition: visibility 0s linear 0.7s;
+    }
+
+    .info:hover .info-popover,
+    .info:focus .info-popover,
+    .info:focus-within .info-popover {
+        transition: visibility 0s linear 0s;
+    }
+}
+
+.info-popover > span {
+    display: block;
+}
+
+.info-who,
+.info-cite,
+.info-links {
+    margin-top: 0.8rem;
+    font-size: 1.3rem;
+    color: #555;
+}
+
+/* Cards are laid out in a grid at every width; only the count changes. Four
+   across at full width rather than five: the extra ~60px per card is what pays
+   for the pill line and a title set at a readable size. */
+.application-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+}
+
+@media (min-width: 480px) {
+    .application-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 700px) {
+    .application-list {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (min-width: 1000px) {
+    .application-list {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    /* The popover is wider than a card, so for the first two in a row it opens
+       rightwards instead and stays on the page. Below this width the cards are
+       wider than the popover and it fits either way. */
+    .application-list > li:nth-child(4n + 1) .info-popover,
+    .application-list > li:nth-child(4n + 2) .info-popover {
+        left: -1rem;
+        right: auto;
+    }
+}
+
+/* Open-access marker on a citation, emitted by layouts/partials/citation.html.
+   Only reachable inside an application's info popover. */
+.oa-badge {
+    display: inline-block;
+    font-size: 1.1rem;
+    font-weight: 600;
+    background-color: #f5a623;
+    color: #ffffff;
+    border-radius: 3px;
+    padding: 0 0.4rem;
+    margin-left: 0.4rem;
+    vertical-align: middle;
+}
+
+/* Section breaks on the single page.
+ *
+ * Space only. There used to be a hairline above every h2 as well, from when
+ * the page was an undifferentiated run of headings; the boxed showcase and the
+ * boxed call to action now do that work with their own edges, and a rule on
+ * top of them read as a divider too many.
+ *
+ * One gap, applied at every junction, so section-to-section, section-to-box and
+ * box-to-box all read the same. The boxes previously carried their own
+ * margin-bottom, which made a box-to-box gap half the size of a heading-to-
+ * heading one. Boxes now contribute nothing below and the next block owns the
+ * space, whatever it is.
+ *
+ * The scroll offset that keeps a heading clear of the pinned header is set
+ * once, as scroll-padding on <html> in the theme stylesheet.
+ */
+.index-content h2 {
+    margin-top: 8rem;
+}
+
+.index-content h2:first-of-type {
+    margin-top: 4rem;
+}
+
+/* The negative side margins are what makes a box bleed wider than the text
+   column, so they have to be repeated here. */
+.index-content > .box {
+    margin: 8rem -30px 0;
+}
+
+/* Sub-headings within a section: enough space to separate them from the
+   preceding block, less when one directly follows its own h2. */
+.index-content h3 {
+    margin-top: 4rem;
+}
+
+.index-content h2 + h3 {
+    margin-top: 2rem;
+}
+
+/* A heading that opens a call-out box sits against the box's own padding. */
+.index-content .box h3 {
+    margin-top: 0;
+}
+
+/* The showcase is a whole section inside a box; its heading sits against the
+   box's own padding rather than carrying the between-sections gap. */
+.index-content .box h2 {
+    margin-top: 0;
+}
+
+.index-content .box > :last-child {
+    margin-bottom: 0;
+}
+
+/* The one-line notes that follow a section's main block. */
+.section-note {
+    font-size: 1.4rem;
+    color: #555;
+    margin-top: -1.5rem;
+    margin-bottom: 3rem;
+}
+
+/* The "there is more behind these" line is not an aside about the block above
+   it, it is a list of things the section did not have room for — so it stands
+   away from the panels and reads a size up. Defined after .section-note so it
+   wins on order at equal specificity. */
+.section-more {
+    margin-top: 4rem;
+    margin-bottom: 0;
+    font-size: 1.55rem;
+    line-height: 1.6;
+}
+

@@ -1,0 +1,18 @@
+{{- $count := int (.Get "count" | default 3) -}}
+{{- $posts := first $count (where (where site.Pages.ByDate.Reverse "Section" "in" site.Params.mainSections) ".Title" "!=" "News") -}}
+{{- with $posts }}
+<section>
+    {{/* The heading is the way to the archive: News is not in the top menu,
+         which is reserved for in-page anchors and outbound links. */}}
+    <h4><a href="/news/">News</a></h4>
+    <ul class="list-unstyled list-news">
+        {{- range . }}
+        <li>
+            <span class="date">{{ .Date.Format "2 Jan 2006" }}</span>
+            <br>
+            <a href="{{ .RelPermalink }}">{{ .Title | markdownify }}</a>
+        </li>
+        {{- end }}
+    </ul>
+</section>
+{{- end }}

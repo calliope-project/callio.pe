@@ -4,7 +4,7 @@ description: "Release announcement and highlights for Calliope v0.6.5."
 date: 2020-01-15T10:00:00+01:00
 ---
 
-Version 0.6.5 is packaged up and ready for download on [PyPI](https://pypi.python.org/pypi/calliope) and [conda-forge](https://anaconda.org/conda-forge/calliope)!
+Version 0.6.5 is packaged up and ready for download on [PyPI](https://pypi.org/project/calliope/) and [conda-forge](https://anaconda.org/conda-forge/calliope)!
 
 This release improves and expands on the model-wide group constraints added in 0.6.4, further increasing the flexibility they make available.
 

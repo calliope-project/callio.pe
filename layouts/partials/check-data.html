@@ -1,0 +1,74 @@
+{{- /*
+  Validates data/applications.yaml and data/publications.yaml while the site
+  builds. `errorf` is a hard gate — Hugo exits non-zero — so bad data fails the
+  build rather than rendering a broken card. Cosmetic problems, which are a
+  judgement call rather than a mistake, only warn.
+
+  Called once from layouts/_default/index.html; the home page is the only page
+  that uses either file. Produces no output.
+*/ -}}
+
+{{- $pubs := site.Data.publications }}
+{{- $kinds := slice "research" "practice" "teaching" }}
+
+{{- range $i, $p := $pubs }}
+  {{- $where := printf "publications[%d] %q" $i (or $p.title "<untitled>") }}
+  {{- range $field := slice "title" "authors" "year" "venue" }}
+    {{- if not (index $p $field) }}
+      {{- errorf "%s: missing required field %q" $where $field }}
+    {{- end }}
+  {{- end }}
+  {{- if and (not $p.doi) (not $p.url) }}
+    {{- errorf "%s: needs either a doi or a url" $where }}
+  {{- end }}
+{{- end }}
+
+{{- $ids := slice }}
+{{- range $i, $a := site.Data.applications }}
+  {{- $where := printf "applications[%d] %q" $i (or $a.id "<no id>") }}
+
+  {{- range $field := slice "id" "kind" "title" "blurb" "institutions" }}
+    {{- if not (index $a $field) }}
+      {{- errorf "%s: missing required field %q" $where $field }}
+    {{- end }}
+  {{- end }}
+
+  {{- with $a.id }}
+    {{- if in $ids . }}{{ errorf "%s: duplicate id" $where }}{{ else }}{{ $ids = $ids | append . }}{{ end }}
+  {{- end }}
+
+  {{- with $a.kind }}
+    {{- if not (in $kinds .) }}
+      {{- errorf "%s: unknown kind %q (expected one of %s)" $where . (delimit $kinds ", ") }}
+    {{- end }}
+    {{- /* A research entry cites publications.yaml so the reference is written once. */ -}}
+    {{- if and (eq . "research") (not $a.doi) }}
+      {{- errorf "%s: research entries need a 'doi' that is in publications.yaml" $where }}
+    {{- end }}
+    {{- if and (in (slice "practice" "teaching") .) (not $a.links) }}
+      {{- errorf "%s: %s entries need at least one link" $where . }}
+    {{- end }}
+  {{- end }}
+
+  {{- with $a.doi }}
+    {{- if not (where $pubs "doi" .) }}
+      {{- errorf "%s: doi %q is not in publications.yaml" $where . }}
+    {{- end }}
+  {{- end }}
+
+  {{- range $a.links }}
+    {{- if not (hasPrefix (.url | default "") "http") }}
+      {{- errorf "%s: link %q needs an absolute url" $where (.label | default "") }}
+    {{- end }}
+  {{- end }}
+
+  {{- /* Shown on a card a quarter of the page wide; anything longer wraps into a wall. */ -}}
+  {{- if gt (len (or $a.institutions "")) 60 }}
+    {{- warnf "%s: institutions is %d characters — it has to fit on a card" $where (len $a.institutions) }}
+  {{- end }}
+  {{- /* The place shares one short line with the kind pill and the info button,
+         and is ellipsised rather than wrapped, so a long one is simply cut off. */ -}}
+  {{- if gt (len (or $a.place "")) 18 }}
+    {{- warnf "%s: place is %d characters — it shares a line with the kind pill" $where (len $a.place) }}
+  {{- end }}
+{{- end }}

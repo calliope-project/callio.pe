@@ -1,0 +1,18 @@
+{{/* Project stylesheets, inlined via the theme's head-custom hook. */}}
+{{- $sheets := slice -}}
+{{- range slice "css/showcase.css" "css/community.css" "css/code.css" "css/dark.css" -}}
+  {{- with resources.Get . }}{{ $sheets = $sheets | append . }}{{ end -}}
+{{- end -}}
+{{- with $sheets -}}
+  {{- $css := . | resources.Concat "css/custom.css" | minify -}}
+  <style>{{ $css.Content | safeCSS }}</style>
+{{- end -}}
+
+{{/* The dark syntax theme is `hugo gen chromastyles` output, which is bare
+     rules with no media query -- included as-is it would override the light
+     one for everybody. Wrapping it here rather than in the file keeps that
+     file regenerable with a plain command. */}}
+{{- with resources.Get "css/syntax-dark.css" -}}
+  {{- $dark := . | minify -}}
+  <style>@media (prefers-color-scheme: dark){ {{- $dark.Content | safeCSS -}} }</style>
+{{- end -}}

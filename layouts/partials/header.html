@@ -1,0 +1,37 @@
+{{/* Most of the menu is in-page anchors, so anything with an absolute URL is
+     leaving the site. The split is derived from the URL rather than a
+     per-entry flag, so a new outbound link in config.yaml lands in the right
+     list, and is labelled, automatically. Two lists rather than one because
+     narrow viewports give each its own row. */}}
+{{ $internal := slice }}
+{{ $external := slice }}
+{{ range .Site.Menus.main }}
+    {{ if strings.HasPrefix .URL "http" }}
+        {{ $external = $external | append . }}
+    {{ else }}
+        {{ $internal = $internal | append . }}
+    {{ end }}
+{{ end }}
+<header class="site-header">
+    <nav class="nav-bar container">
+        <a class="navbar-brand" href="{{ .Site.BaseURL }}">
+            <img src="/images/logo.png" alt="Logo">
+            <!-- {{ .Site.Title }} -->
+        </a>
+        <ul class="nav-list nav-list-internal">
+            {{ $url := .RelPermalink }}
+            {{ range $internal }}
+            <li class="nav-item {{ if eq $url (.URL) }}active{{end}}">
+                <a class="nav-link" href="{{ .URL }}">{{ .Name }}</a>
+            </li>
+            {{ end }}
+        </ul>
+        <ul class="nav-list nav-list-external">
+            {{ range $external }}
+            <li class="nav-item">
+                <a class="nav-link" href="{{ .URL }}">{{ .Name }}<i class="fas fa-external-link-alt" aria-hidden="true"></i><span class="sr-only"> (external link)</span></a>
+            </li>
+            {{ end }}
+        </ul>
+    </nav>
+</header>

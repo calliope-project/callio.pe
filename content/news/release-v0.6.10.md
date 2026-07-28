@@ -4,7 +4,7 @@ description: "Release announcement and highlights for Calliope v0.6.10."
 date: 2023-01-18T16:00:00+01:00
 ---
 
-As of 18 January 2023, version 0.6.10 is packaged up and ready for download on [PyPI](https://pypi.python.org/pypi/calliope) and [conda-forge](https://anaconda.org/conda-forge/calliope)!
+As of 18 January 2023, version 0.6.10 is packaged up and ready for download on [PyPI](https://pypi.org/project/calliope/) and [conda-forge](https://anaconda.org/conda-forge/calliope)!
 
 As of now, the 0.6.x branch of Calliope is mostly in bugfix mode, while work has started on 0.7, the next major version of Calliope with several wide-ranging improvements.
 

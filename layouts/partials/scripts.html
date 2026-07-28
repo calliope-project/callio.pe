@@ -1,0 +1,6 @@
+{{/* Inlined at the end of <body>, so the DOM is parsed and no request is
+     needed for a script this small. */}}
+{{- with resources.Get "js/scrollspy.js" -}}
+  {{- $js := . | minify -}}
+  <script>{{ $js.Content | safeJS }}</script>
+{{- end -}}

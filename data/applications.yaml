@@ -1,0 +1,208 @@
+# Example applications: things people decided or published with Calliope.
+#
+# Fields:
+#   id       unique slug
+#   kind     research | practice | teaching — shown as a pill, and what gives
+#            the card its colour
+#   place    where it is about, in a word or two: shown beside the pill. Keep
+#            it short, it shares a line with the pill and the info button
+#   title    a short framing of what was asked or decided, not the paper title
+#   blurb    one or two sentences on what came out of it
+#   institutions
+#            the short form shown on the card: a few names separated by " · ".
+#            Keep it short — the card is a quarter of the page wide
+#   who      the full attribution, shown only in the popover
+#   doi      research entries only: must match an entry in publications.yaml,
+#            so the citation is rendered from there and never retyped
+#   links    practice and teaching entries: where to read it
+#   icon     a Font Awesome 5 solid icon name, without the `fa-`
+#   image    optional: a file in assets/images/applications/, used instead of
+#            the icon. None of the entries have one yet; drop a file in and
+#            name it here and it will be picked up
+#
+# Checked by layouts/partials/check-data.html as the site builds: an invalid
+# entry fails the build rather than rendering a broken card.
+
+- id: brazil-land-conservation
+  kind: research
+  place: Brazil
+  institutions: "ITA · TU Delft"
+  icon: tree
+  title: Renewables at scale while protecting conservation areas and promoting reforestation
+  who: TU Delft and Instituto Tecnológico de Aeronáutica
+  blurb: >-
+    Keeping large-scale wind and solar out of priority conservation areas
+    raises total system cost by only up to 4%. It also allows re-foresting degraded
+    lands, sequestering up to an additional 770 Mt of CO₂ a year.
+  doi: 10.1016/j.oneear.2025.101520
+
+- id: australia-hydrogen
+  kind: practice
+  place: Australia
+  institutions: "Arup · Frontier Economics · DCCEEW"
+  icon: gas-pump
+  title: Australia's first national hydrogen infrastructure assessment
+  who: Arup with Frontier Economics, for the Department of Climate Change, Energy, the Environment and Water
+  blurb: >-
+    Where hydrogen infrastructure investment would do most good, across three
+    demand scenarios and eight sectors, taking in electricity, gas and water
+    networks, refuelling, ports and rail.
+  links:
+    - {
+        label: Final report,
+        url: "https://www.dcceew.gov.au/sites/default/files/documents/national-hydrogen-infrastructure-assessment-final-report.pdf",
+      }
+    - {
+        label: Arup on the project,
+        url: "https://www.arup.com/en-us/projects/national-hydrogen-infrastructure-assessment-australia/",
+      }
+
+- id: europe-diversity
+  kind: research
+  place: Europe
+  institutions: "ETH Zürich · TU Delft"
+  icon: project-diagram
+  title: How many different ways can Europe reach carbon neutrality?
+  who: ETH Zürich and TU Delft
+  blurb: >-
+    Rather than one cost-optimal answer, this study mapped the space of very
+    different system designs that all eliminate fossil fuels across power,
+    heat, transport and industry. The results show how much design freedom is left.
+  doi: 10.1016/j.joule.2022.05.009
+
+- id: delft-heat-transition
+  kind: teaching
+  place: Delft
+  institutions: "Leiden University · TU Delft"
+  icon: fire
+  title: Which heat transition for a Delft neighbourhood?
+  who: >-
+    Leiden University and TU Delft — Alex Nedelcu, Elvire Landais,
+    Daan van Amelsfort and Zhi-Chin Ju
+  blurb: >-
+    District heating, full electrification or a hybrid, sized for four Delft
+    neighbourhoods across cold, normal and warm years. The model returns a bill
+    of materials for the network, which a life-cycle assessment then turns into
+    the environmental cost of actually building each option.
+  links:
+    - { label: Code, url: "https://github.com/anedelcu2002/SC-G5" }
+    - {
+        label: Report (PDF,
+        75 MB),
+        url: "https://github.com/anedelcu2002/SC-G5/blob/main/Environmental%20Impacts%20of%20Infrastructure%20for%20the%20Delft%20Heat%20Transition.pdf",
+      }
+
+- id: hawaii-decarbonization
+  kind: practice
+  place: Hawai‘i
+  institutions: "Hawai‘i State Energy Office · NREL"
+  icon: water
+  title: Hawai‘i decarbonisation pathways for the state legislature
+  who: Hawai‘i State Energy Office with the National Renewable Energy Laboratory
+  blurb: >-
+    Four scenarios to 2045 spanning transport, buildings, waste, refrigerants
+    and land use, built in Engage — the web-based planning tool that NREL designed
+    on top of Calliope.
+  links:
+    - {
+        label: Assumptions and methods,
+        url: "https://energy.hawaii.gov/clean-energy-vision/decarbonization-strategy/decarbonization-report-development-assumptions-and-methods/",
+      }
+    - { label: Engage, url: "https://github.com/NatLabRockies/engage" }
+
+- id: calliope-africa
+  kind: research
+  place: Africa
+  institutions: "Politecnico di Milano"
+  icon: globe-africa
+  title: What storage and transmission would Africa need?
+  who: Politecnico di Milano
+  blurb: >-
+    A continent-wide model of the role storage and transmission play in
+    integrating renewables across Africa, at a resolution that lets the two
+    be traded off against each other.
+  doi: 10.1016/j.esd.2025.101760
+
+- id: wales-laep
+  kind: practice
+  place: Wales
+  institutions: "Arup · Welsh Government"
+  icon: map
+  title: Local area energy plans across Wales
+  who: Arup, with the Welsh Government and local authorities
+  blurb: >-
+    Hourly optimisation of local energy systems, often down to the electricity
+    substation, to work out which technologies and infrastructure each area
+    needs. Adopted by councils including Cardiff, Gwynedd, Flintshire and
+    Monmouthshire.
+  links:
+    - {
+        label: Arup on the programme,
+        url: "https://www.arup.com/projects/welsh-local-area-energy-planning/",
+      }
+    - {
+        label: Gwynedd technical report,
+        url: "https://democracy.gwynedd.llyw.cymru/documents/s45672/Appendix%202%20-%20Gwynedd%20Local%20Area%20Energy%20Plan%202025%20-%20Technical%20Report.pdf",
+      }
+
+- id: bangalore-resilience
+  kind: research
+  place: Bangalore
+  institutions: "University of Cambridge"
+  icon: city
+  title: Do district energy designs survive the conditions they were not designed for?
+  who: University of Cambridge
+  blurb: >-
+    An urban district in Bangalore, tested against demand and grid-availability
+    scenarios it had not been optimised against. This is a way of checking whether a
+    least-cost design is merely least-cost on paper and fails in reality.
+  doi: 10.1016/j.apenergy.2021.116465
+
+- id: kosovo-ndc
+  kind: practice
+  place: Kosovo
+  institutions: "Berlin Economics · Government of Kosovo"
+  icon: landmark
+  title: Kosovo's national climate commitment
+  who: Berlin Economics, for the Government of Kosovo with UNDP support
+  blurb: >-
+    A sector-coupled model of electricity and district heating, including
+    cross-border exchange, built to underpin the emissions target Kosovo
+    submitted as its Nationally Determined Contribution.
+  links:
+    - {
+        label: Government decision and NDC,
+        url: "https://ammk-rks.net/assets/cms/uploads/files/DECISION%20GRK%20NO.%2020_253%20The%20Nationally%20Determined%20Contribution%20%28NDC%29%20of%20Kosovo.pdf",
+      }
+
+- id: europe-v2g
+  kind: research
+  place: Europe
+  institutions: "TU Delft"
+  icon: charging-station
+  title: What are smart charging and vehicle-to-grid actually worth?
+  who: TU Delft
+  blurb: >-
+    Charging infrastructure and its costs added into a European energy system
+    model, with uncontrolled charging, V1G and V2G left to compete. Smart
+    charging (V1G only) saves the most, at €19–42 billion a year, while V2G saves
+    far less but has the potential to earn around €6.4 billion a year in balancing
+    markets. Uniform EU charging targets overstate what some countries need, and
+    hold back the benefits in others.
+  doi: 10.1038/s41560-026-02107-5
+
+- id: ukraine-solar
+  kind: practice
+  place: Ukraine
+  institutions: "Berlin Economics · Greenpeace"
+  icon: solar-panel
+  title: A solar plan for Ukraine
+  who: Berlin Economics, for Greenpeace Germany
+  blurb: >-
+    Capacity expansion and dispatch for solar, storage and balancing through
+    2030, in a power system system under continuous attack.
+  links:
+    - {
+        label: Report,
+        url: "https://www.greenpeace.de/publikationen/20240607-greenpeace-report-BE-solar-marshallplan-ukraine-encv.pdf",
+      }

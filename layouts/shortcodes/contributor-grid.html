@@ -1,0 +1,20 @@
+{{- with partialCached "contributors.html" . }}
+<ul class="contributor-grid">
+  {{- range . }}
+  <li class="contributor">
+    <a class="contributor-id" href="{{ .profile | default (printf "https://github.com/%s" .login) }}"
+       rel="nofollow noopener noreferrer ugc">
+      <span class="contributor-portrait">
+        {{- with .avatar_url }}<img class="avatar" src="{{ . }}" alt="" loading="lazy" width="64" height="64">{{ end }}
+        {{- if in .contributions "maintenance" }}
+        <span class="maintainer-mark maintainer-badge" title="Maintainer"><i class="fas fa-wrench" aria-hidden="true"></i><span class="sr-only"> (maintainer)</span></span>
+        {{- end }}
+      </span>
+      <span class="contributor-name">{{ .name }}</span>
+    </a>
+  </li>
+  {{- end }}
+</ul>
+{{- else }}
+<p>See the <a href="https://github.com/calliope-project/calliope/graphs/contributors">contributors to Calliope on GitHub</a>.</p>
+{{- end }}

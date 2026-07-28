@@ -1,0 +1,11 @@
+{{- $path := .Get "file" -}}
+{{- with resources.Get $path -}}
+{{- $code := highlight .Content ($.Get "language") "" -}}
+<figure class="code-window">
+    {{- with $.Get "title" }}
+    <figcaption class="code-title">{{ . }}</figcaption>
+    {{ end }} {{- $code }}
+</figure>
+{{ else -}}
+{{- errorf "codeblock: no asset at %q (%s)" $path $.Position -}}
+{{- end -}}

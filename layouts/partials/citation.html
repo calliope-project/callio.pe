@@ -1,0 +1,31 @@
+{{/*
+  Renders one publication as a citation.
+  Params: dict "entry" <entry> "compact" <bool>
+  Compact mode drops the venue and links, for use inside cards.
+*/}}
+{{- $e := .entry -}}
+{{- $authors := "" -}}
+{{- with $e.authors_display -}}
+  {{- $authors = . -}}
+{{- else -}}
+  {{- $n := len $e.authors -}}
+  {{- if eq $n 1 -}}
+    {{- $authors = index $e.authors 0 -}}
+  {{- else if le $n 4 -}}
+    {{- $authors = delimit $e.authors ", " " and " -}}
+  {{- else -}}
+    {{- $authors = printf "%s et al." (index $e.authors 0) -}}
+  {{- end -}}
+{{- end -}}
+{{- $link := "" -}}
+{{- with $e.doi }}{{ $link = printf "https://doi.org/%s" . }}{{ else }}{{ $link = $e.url }}{{ end -}}
+
+{{- if .compact -}}
+  <a href="{{ $link }}">{{ $authors }} ({{ $e.year }})</a>
+{{- else -}}
+  {{ $authors }} ({{ $e.year }}). {{ $e.title }}.
+  {{- with $e.venue_detail }} <em>{{ . }}</em>.{{ else }}{{ with $e.venue }} <em>{{ . }}</em>.{{ end }}{{ end }}
+  {{- with $e.doi }} <a href="https://doi.org/{{ . }}">doi: {{ . }}</a>{{ end }}
+  {{- if and (not $e.doi) $e.url }} <a href="{{ $e.url }}">Full text</a>{{ end }}
+  {{- if $e.open_access }} <span class="oa-badge" title="Open access">OA</span>{{ end }}
+{{- end -}}
