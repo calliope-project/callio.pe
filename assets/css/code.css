@@ -1,0 +1,60 @@
+/* Code blocks, drawn as a stylised app window.
+ *
+ * Colours come from assets/css/syntax.css, which is generated
+ * by `hugo gen chromastyles`. The frame lives here instead, because that file
+ * is regenerated wholesale and would drop anything added to it. This one is
+ * inlined from the <head>, after the concatenated stylesheet, so it wins on
+ * order.
+ *
+ * Hugo wraps a highlighted block as .highlight > pre.chroma > code. The frame
+ * is on .highlight, so a plain fenced block gets one too; the codeblock
+ * shortcode wraps that in a .code-window figure when it also has a title bar.
+ */
+
+/* Hairline and radius match the rest of the page -- #e1e1e1 is the same rule
+   colour as the header, the section breaks and the application boxes, and 6px is
+   the intro boxes' radius. No shadow: the frame should sit on the page, not
+   float above it. */
+.highlight,
+.code-window {
+    border: 1px solid #e1e1e1;
+    border-radius: 6px;
+    overflow: hidden;
+    background-color: #ffffff;
+    margin: 0 0 2.5rem;
+}
+
+/* The outer figure is the window, so the block inside it is only the code. */
+.code-window .highlight {
+    border: 0;
+    border-radius: 0;
+    margin: 0;
+}
+
+/* The title bar. It says what the sample is rather than carrying traffic-light
+   dots, which would pin the frame to one operating system. Left padding matches
+   the code's, so the two line up. */
+.code-title {
+    padding: 0.8rem 2rem;
+    background-color: #f7f7f7;
+    border-bottom: 1px solid #e1e1e1;
+    font-size: 1.4rem;
+    line-height: 1.4;
+    color: #666666;
+}
+
+/* Undo the theme's dark `pre`: the frame supplies the surface now. */
+.highlight pre,
+.highlight pre.chroma {
+    margin: 0;
+    background-color: transparent;
+    color: inherit;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+.highlight pre > code {
+    display: block;
+    padding: 1.6rem 2rem;
+    background-color: transparent;
+}

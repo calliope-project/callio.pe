@@ -1,0 +1,58 @@
+# The papers behind the `research` entries in data/applications.yaml.
+#
+# One entry per paper, keyed by DOI. Every `research` application names a DOI
+# that must be in here, and its citation is rendered from this file rather than
+# retyped on the card — see layouts/partials/citation.html.
+#
+# Bibliographic fields are taken from OpenAlex so that author names, venues and
+# years stay consistent.
+#
+# Required: doi (or url, for works without one), title, authors, year, venue.
+# Optional: venue_detail (overrides venue in the citation), open_access,
+# openalex, type.
+#
+# This is bibliography only. Nothing about how an entry is presented belongs
+# here; that is decided in data/applications.yaml.
+#
+# Checked by layouts/partials/check-data.html as the site builds: an invalid
+# entry fails the build.
+
+- doi: 10.1016/j.oneear.2025.101520
+  title: Land conservation and large-scale renewable energy systems are simultaneously possible in Brazil
+  authors: [Paula Conde Santos Borba, Wilson Cabral de Sousa, Stefan Pfenninger]
+  year: 2025
+  venue: One Earth
+  open_access: true
+
+- doi: 10.1016/j.joule.2022.05.009
+  title: Diversity of options to eliminate fossil fuels and reach carbon neutrality across the entire European energy system
+  authors: [Bryn Pickering, Francesco Lombardi, Stefan Pfenninger]
+  year: 2022
+  venue: Joule
+  open_access: true
+  openalex: W4283829835
+
+- doi: 10.1016/j.apenergy.2021.116465
+  title: Quantifying resilience in energy systems with out-of-sample testing
+  authors: [Bryn Pickering, Ruchi Choudhary]
+  year: 2021
+  venue: Applied Energy
+  open_access: true
+  openalex: W3121471039
+
+- doi: 10.1016/j.esd.2025.101760
+  title: 'Calliope Africa: Modeling the role of storage and transmission for renewable energy integration'
+  authors: [Nicolò Stevanato, Valeria Baiocco, Emanuela Colombo]
+  year: 2025
+  venue: Energy for Sustainable Development
+  open_access: true
+  openalex: W4411228373
+
+- doi: 10.1038/s41560-026-02107-5
+  title: Coordinated planning of European charging infrastructure and energy system for optimal V1G and V2G deployment
+  authors: [Francesco Sanvito, Francesco Lombardi, Stefan Pfenninger-Lee]
+  year: 2026
+  venue: Nature Energy
+  open_access: false
+  openalex: W7168279299
+  type: journal-article

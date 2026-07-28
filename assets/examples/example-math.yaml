@@ -1,0 +1,8 @@
+system_balance:
+  foreach: [nodes, carriers, timesteps]
+  equations:
+    - expression: >-
+        sum(flow_out, over=techs) -
+        sum(flow_in, over=techs) -
+        sum(flow_export, over=techs) +
+        (unmet_demand + unused_supply) == 0

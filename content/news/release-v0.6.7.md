@@ -4,7 +4,7 @@ description: "Release announcement and highlights for Calliope v0.6.7."
 date: 2021-06-30T16:00:00+01:00
 ---
 
-Version 0.6.7 is packaged up and ready for download on [PyPI](https://pypi.python.org/pypi/calliope) and [conda-forge](https://anaconda.org/conda-forge/calliope)!
+Version 0.6.7 is packaged up and ready for download on [PyPI](https://pypi.org/project/calliope/) and [conda-forge](https://anaconda.org/conda-forge/calliope)!
 
 Key additional features are:
 

@@ -1,0 +1,42 @@
+{{ $base := resources.Get "css/style.css" }}
+{{ $syntax := resources.Get "css/syntax.css" }}
+{{ $milligram := resources.Get "css/milligram.css" }}
+{{ $style := slice $milligram $base $syntax | resources.Concat "css/all.css" | minify | fingerprint }}
+
+<!doctype html>
+<html lang="{{ .Lang }}">
+  <head>
+    {{ partial "head-meta" . }}
+    <link rel="canonical" href="{{ .Permalink }}">
+    <title>
+      {{ block "title" . }}
+        {{ .Title}}{{ if ne .Title .Site.Title }} | {{ .Site.Title }}{{ end }}
+      {{ end }}
+    </title>
+    <meta name="description" content="{{ $.Param "description" }}">
+    {{ with .Keywords }}<meta name="keywords" content="{{ range $i, $e := . }}{{ if $i }} {{ end }}{{ $e }}{{ end }}">{{ end }}
+    <link async rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ $style.Permalink }}" integrity="{{ $style.Data.Integrity }}">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link href="/news/index.xml" rel="alternate" type="application/rss+xml" title="Calliope News">
+    {{ partial "head-custom.html" . }}
+  </head>
+  <body>
+    {{ block "header" . }}
+    {{ partial "header" . }}
+    {{ end }}
+
+    {{ block "body" . }}
+    <main class="wrapper">
+      <section class="container">
+      {{ block "main" . }}
+      {{ end }}
+      </section>
+    </main>
+    {{ end }} <!-- block body-->
+
+    {{ partial "footer.html" . }}
+
+    {{ partial "scripts.html" . }}
+  </body>
+</html>

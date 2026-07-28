@@ -1,69 +1,84 @@
 baseURL: "https://www.callio.pe/"
 languageCode: "en-gb"
 title: "Calliope"
-theme: "calliope"
 
 pygmentsCodeFences: true
 pygmentsUseClasses: true
-pygmentsStyle: friendly
+pygmentsStyle: github
 rssLimit: 10
 pagination:
   pagerSize: 5
 sectionPagesMenu: shadow
 
 markup:
-    goldmark:
-        renderer:
-            unsafe: true
-        parser:
-            attribute:
-                block: true
-                title: true
+  goldmark:
+    renderer:
+      unsafe: true
+    parser:
+      attribute:
+        block: true
+        title: true
 
 permalinks:
-  pages: /:title
-  models: /models/:title
   news: /news/:year/:month/:title
+
+# Don't build /tags/ and /categories/ pages
+disableKinds: ["taxonomy", "term"]
+
+# Ensure that cache expiry allows a nightly rebuild of contributor data
+caches:
+  getresource:
+    dir: :cacheDir/:project
+    maxAge: 1h
 
 params:
   description: "Calliope is a free and open-source (Apache 2.0 licensed) tool that makes it easy to build energy system models at scales ranging from urban districts to entire continents."
 
-  # Main sections (currently used for the recent posts in the sidebar)
   mainSections: ["news"]
 
-  # Date format (default: Jan 2, 2006)
-  # date_format: "Jan 2, 2006"
-
-  # Display post summaries instead of content in list templates (default: true)
-  # truncate: false
-
-  sidebar:
-    showRecent: true  # Whether to show the recent posts or not (default: true)
-    num_recent_posts: 3  # How many posts to show on the sidebar (Default: 5)
+  # Repositories whose all-contributors credits are shown under Community.
+  contributorSources:
+    - repo: calliope-project/calliope
+      ref: HEAD
 
 outputs:
-    home: ["HTML"]  # Default includes RSS
-    section: ["HTML", "RSS"]
+  home: ["HTML"] # Default includes RSS
+  section: ["HTML", "RSS"]
 
 menu:
   main:
-  - identifier: models
-    name: Research
-    title: Research
-    url: /research/
-    weight: 30
-  - identifier: partners-and-team
-    name: Partners and team
-    title: Partners and team
-    url: /partners-and-team/
-    weight: 40
-  - identifier: support
-    name: Support
-    title: Support
-    url: /support/
-    weight: 50
-  - identifier: news
-    name: News
-    title: News
-    url: /news/
-    weight: 100
+    - identifier: why
+      name: Why Calliope?
+      title: What Calliope is and what it is good at
+      url: /#why
+      weight: 5
+    - identifier: showcase
+      name: Showcase
+      title: Models and studies built with Calliope
+      url: /#showcase
+      weight: 10
+    - identifier: community
+      name: Community
+      title: Who uses Calliope and who builds it
+      url: /#community
+      weight: 25
+    - identifier: join
+      name: Join
+      title: Getting help and contributing
+      url: /#join
+      weight: 28
+    - identifier: docs
+      name: Docs
+      title: Calliope documentation
+      url: https://calliope.readthedocs.io/en/latest/
+      weight: 30
+    - identifier: chat
+      name: Chat
+      title: Community chat on Zulip
+      url: https://calliope-modelblocks.zulipchat.com/
+      weight: 40
+    - identifier: github
+      name: GitHub
+      title: Calliope source code and issue tracker
+      url: https://github.com/calliope-project/calliope
+      weight: 50

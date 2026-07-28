@@ -1,8 +1,0 @@
-{{ if .Params.tags }}
-<div class="post-tags text-secondary">
-    <strong>{{ i18n "tags" }}:</strong>
-    {{ range .Params.tags }}
-        <a class="badge badge-primary" href="/tags/{{ . | urlize }}">{{ . }}</a>
-    {{ end }}
-</div>
-{{ end }}

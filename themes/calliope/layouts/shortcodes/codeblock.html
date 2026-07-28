@@ -1,2 +1,0 @@
-{{ $code := (highlight (.Get "file" | readFile) (.Get "language") "")}}
-{{ (print $code) | safeHTML }}

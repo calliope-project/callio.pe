@@ -1,0 +1,9 @@
+techs:
+  ccgt:
+    name: Combined cycle gas turbine
+    base_tech: supply
+    carrier_out: electricity
+    flow_cap_max: 40000  # kW
+    flow_out_eff: 0.5
+    flow_ramping: 0.8
+    lifetime: 25

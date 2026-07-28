@@ -1,0 +1,41 @@
+{{- $pubs := site.Data.publications -}}
+<ul class="application-list">
+  {{- range $a := site.Data.applications }}
+    {{- $pub := "" }}
+    {{- /* A missing publication is an error in check-data.html, not a case to handle here. */ -}}
+    {{- with $a.doi }}
+      {{- with where $pubs "doi" . }}{{ $pub = index . 0 }}{{ end }}
+    {{- end }}
+    {{- $href := "" }}
+    {{- with $a.doi }}{{ $href = printf "https://doi.org/%s" . }}{{ end }}
+    {{- if not $href }}{{ with $a.links }}{{ $href = (index . 0).url }}{{ end }}{{ end }}
+  <li class="application kind-{{ $a.kind }}" id="application-{{ $a.id }}">
+    <span class="application-mark" aria-hidden="true">
+      {{- with $a.image }}
+        {{- with resources.Get (printf "images/applications/%s" .) }}<img src="{{ .RelPermalink }}" alt="" loading="lazy">
+        {{- else }}{{ warnf "application-list: no image assets/images/applications/%s" $a.image }}{{ end }}
+      {{- else }}<i class="fas fa-{{ $a.icon | default "circle" }}"></i>
+      {{- end }}
+    </span>
+    <span class="application-text">
+      <span class="application-meta">
+        <span class="application-kind">{{ $a.kind | title }}</span>
+        {{- with $a.place }}<span class="application-place">{{ . }}</span>{{ end }}
+      </span>
+      <a class="application-title" href="{{ $href }}">{{ $a.title }}</a>
+      {{- with $a.institutions }}<span class="application-institutions">{{ . }}</span>{{ end }}
+    </span>
+    <span class="info" tabindex="0" role="note">
+      <i class="fas fa-info-circle" aria-hidden="true"></i>
+      <span class="info-popover">
+        <span class="info-blurb">{{ $a.blurb }}</span>
+        {{- with $a.who }}<span class="info-who">{{ . }}</span>{{ end }}
+        {{- with $pub }}<span class="info-cite">{{ partial "citation.html" (dict "entry" . "compact" false) }}</span>{{ end }}
+        {{- with $a.links }}<span class="info-links">
+          {{- range $i, $l := . }}{{ if $i }} · {{ end }}<a href="{{ $l.url }}">{{ $l.label }}</a>{{ end }}
+        </span>{{ end }}
+      </span>
+    </span>
+  </li>
+  {{- end }}
+</ul>

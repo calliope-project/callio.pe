@@ -1,0 +1,133 @@
+/* The Community section: the contributor grid, rendered as a set of links to
+ * the people who build Calliope.
+ */
+
+/* Hovering fills the cell rather than underlining it. The padding and radius
+ * are always present, so nothing moves; an underline here would reflow every
+ * row below it.
+ *
+ * border-bottom has to be set in both rules: the theme's `main a:hover` is
+ * more specific than the class on its own, so without repeating it the
+ * underline comes back on hover -- which is the reflow this is avoiding.
+ */
+.contributor-id {
+    display: block;
+    color: inherit;
+    border-bottom: 0;
+    border-radius: 4px;
+    transition: background-color 0.12s ease-in-out;
+}
+
+.contributor-id:hover,
+.contributor-id:focus-visible {
+    color: inherit;
+    border-bottom: 0;
+    background-color: #f0f0f0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .contributor-id {
+        transition: none;
+    }
+}
+
+/* --- contributors ---
+ *
+ * A wrapping grid rather than one of the horizontal strips used for the
+ * galleries: the point here is to show that the list is long, so it should all
+ * be on screen at once.
+ */
+
+.contributor-grid {
+    list-style: none;
+    margin: 2rem 0 3rem;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 0.5rem;
+}
+
+.contributor {
+    margin: 0;
+    text-align: center;
+}
+
+/* Milligram draws list bullets with `main ul li::before`, which list-style
+   does not switch off. */
+.contributor-grid li::before {
+    content: none;
+}
+
+.contributor-id {
+    /* Fills the cell so that every highlight in a row is the same height,
+       even where a long name wraps to two lines. */
+    height: 100%;
+    padding: 1.2rem 0.6rem 1rem;
+}
+
+/* Holds its size whether or not there is an avatar to show, so the maintainer
+   badge has something to hang off either way. */
+.contributor-portrait {
+    position: relative;
+    display: block;
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 0.6rem;
+}
+
+.contributor .avatar {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    display: block;
+    background-color: #f0f0f0;
+}
+
+/* Marks maintainers, the one contribution type the grid surfaces. A filled disc
+   rather than a page-coloured ring around the glyph: the card behind it changes
+   colour on hover, so a ring would have to track that fill, while a solid disc
+   reads the same over the card, the hover fill and the avatar's edge.
+
+   Same shape as .application-mark in showcase.css, at badge size. One rule for
+   both places it appears -- on an avatar and in the Community prose that
+   explains it -- so the legend cannot drift from the thing it is explaining. */
+.maintainer-mark {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background-color: #9E4A3D;
+    color: #fff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* The theme sizes `i.fas` as a wide bullet gutter; here it is a centred glyph.
+   Two classes deep so that it outweighs that rule, which is a class plus an
+   element -- the same reason .application-mark .fas is written this way. */
+.maintainer-mark .fas {
+    width: auto;
+    padding-right: 0;
+    font-size: 1.1rem;
+}
+
+/* On an avatar: over the bottom-right corner, mostly outside the circle. */
+.maintainer-badge {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+/* In a sentence: centred on the line rather than sitting on the baseline. An
+   inline-flex box takes its baseline from the glyph inside it, which would hang
+   the whole disc off the text baseline. */
+.maintainer-legend {
+    vertical-align: middle;
+}
+
+.contributor-name {
+    display: inline-block;
+    font-size: 1.4rem;
+    line-height: 1.3;
+}
+

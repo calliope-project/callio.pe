@@ -1,0 +1,98 @@
+{{- /*
+  Returns the merged all-contributors credits for the repositories listed in
+  `params.contributorSources`, fetched at build time from each repository's
+  `.all-contributorsrc` — the file the all-contributors bot maintains.
+
+  Nothing is committed to this repository, so a scheduled Netlify build picks up
+  new contributors on its own. To correct someone's name, avatar or contribution
+  types, fix it upstream; it appears here on the next build.
+
+  The file is untrusted input: only `contributors` is read, an invalid entry is
+  skipped rather than fatal, and a failed fetch warns and returns an empty slice.
+  Contributor data is auxiliary — it must never break a build.
+
+  Returns a slice of dicts: login, name, avatar_url, profile, contributions.
+*/ -}}
+
+{{- $merged := slice }}
+{{- $seen := slice }}
+{{- $sortAlphabetically := false }}
+
+{{- range site.Params.contributorSources }}
+  {{- $repo := .repo }}
+  {{- $url := printf "https://raw.githubusercontent.com/%s/%s/.all-contributorsrc" $repo (.ref | default "HEAD") }}
+
+  {{- /* `try` so that an HTTP error is a warning, not a failed build. */ -}}
+  {{- $body := "" }}
+  {{- $res := try (resources.GetRemote $url) }}
+  {{- if $res.Err }}
+    {{- warnf "contributors: %s: %s" $repo $res.Err }}
+  {{- else if not $res.Value }}
+    {{- warnf "contributors: %s: no .all-contributorsrc in the repository" $repo }}
+  {{- else }}
+    {{- $body = $res.Value.Content }}
+  {{- end }}
+
+  {{- $data := dict }}
+  {{- with $body }}
+    {{- $parsed := try (transform.Unmarshal .) }}
+    {{- if $parsed.Err }}
+      {{- warnf "contributors: %s: invalid JSON (%s)" $repo $parsed.Err }}
+    {{- else if not (reflect.IsMap $parsed.Value) }}
+      {{- warnf "contributors: %s: top level is not an object" $repo }}
+    {{- else }}
+      {{- $data = $parsed.Value }}
+    {{- end }}
+  {{- end }}
+
+  {{- $list := $data.contributors }}
+  {{- if and $body (not (reflect.IsSlice $list)) }}
+    {{- warnf "contributors: %s: no 'contributors' list found" $repo }}
+  {{- end }}
+
+  {{- if $data.contributorsSortAlphabetically }}
+    {{- $sortAlphabetically = true }}
+  {{- end }}
+
+  {{- $skipped := 0 }}
+  {{- range first 2000 (or $list slice) }}
+    {{- if not (reflect.IsMap .) }}
+      {{- $skipped = add $skipped 1 }}
+    {{- else }}
+      {{- /* printf %v rather than a cast: a login that is not a string still
+             reaches findRE as something that cannot match. */ -}}
+      {{- $login := printf "%v" (.login | default "") }}
+      {{- if not (findRE `^[A-Za-z0-9][A-Za-z0-9-]{0,38}$` $login) }}
+        {{- $skipped = add $skipped 1 }}
+      {{- else }}
+        {{- $key := lower $login }}
+        {{- /* First occurrence wins. With more than one source this drops the
+               contribution types a later source knows about and the first does
+               not; with a single source it cannot happen at all. */ -}}
+        {{- if not (in $seen $key) }}
+          {{- $seen = $seen | append $key }}
+          {{- $name := printf "%v" (.name | default "") }}
+          {{- $avatar := printf "%v" (.avatar_url | default "") }}
+          {{- $profile := printf "%v" (.profile | default "") }}
+          {{- $merged = $merged | append (dict
+                "login" $login
+                "name" (or $name $login)
+                "avatar_url" (cond (hasPrefix $avatar "https://") $avatar "")
+                "profile" (cond (or (hasPrefix $profile "https://") (hasPrefix $profile "http://")) $profile "")
+                "contributions" (cond (reflect.IsSlice .contributions) .contributions slice)
+          ) }}
+        {{- end }}
+      {{- end }}
+    {{- end }}
+  {{- end }}
+
+  {{- with $skipped }}
+    {{- warnf "contributors: %s: skipped %d invalid %s" $repo . (cond (eq . 1) "entry" "entries") }}
+  {{- end }}
+{{- end }}
+
+{{- if $sortAlphabetically }}
+  {{- $merged = sort $merged "name" }}
+{{- end }}
+
+{{- return $merged }}
