@@ -16,3 +16,5 @@
   {{- $dark := . | minify -}}
   <style>@media (prefers-color-scheme: dark){ {{- $dark.Content | safeCSS -}} }</style>
 {{- end -}}
+
+{{- if eq .Kind "404" -}}{{ partial "legacy-redirects.html" . }}{{- end -}}

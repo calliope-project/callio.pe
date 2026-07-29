@@ -1,0 +1,25 @@
+{{/* Stands in for the redirect rules the old Netlify deploy had. GitHub Pages
+     has no server-side rewrites, but it does serve /404.html for any unmatched
+     path, so prefix-matching here reproduces the wildcards: /publications/ and
+     /publications/anything/below both land on the same target.
+
+     Emitted into <head> so the jump happens before the 404 page paints. The
+     response status is still 404, so these are soft redirects as far as search
+     engines are concerned -- acceptable for a handful of retired paths. */}}
+{{- with site.Params.legacyRedirects -}}
+  <script>
+    (function () {
+      {{/* safeJS is required: without it the JSON is emitted as a quoted
+           string literal rather than an array, and nothing ever matches. */}}
+      var rules = {{ . | jsonify | safeJS }};
+      var path = window.location.pathname;
+      if (path.charAt(path.length - 1) !== "/") path += "/";
+      for (var i = 0; i < rules.length; i++) {
+        if (path.indexOf(rules[i].from) === 0) {
+          window.location.replace(rules[i].to);
+          return;
+        }
+      }
+    })();
+  </script>
+{{- end -}}

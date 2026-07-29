@@ -14,7 +14,9 @@
 {{ end }}
 <header class="site-header">
     <nav class="nav-bar container">
-        <a class="navbar-brand" href="{{ .Site.BaseURL }}">
+        {{/* site.Home.RelPermalink rather than .Site.BaseURL, so the logo link
+             stays inside a relative-URL build (see .github/workflows/pr-build.yml). */}}
+        <a class="navbar-brand" href="{{ site.Home.RelPermalink }}">
             <img src="/images/logo.png" alt="Logo">
             <!-- {{ .Site.Title }} -->
         </a>

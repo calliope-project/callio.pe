@@ -1,13 +1,19 @@
 # callio.pe
 
 Source for the [Calliope project website](https://www.callio.pe/). Built with
-[Hugo](https://gohugo.io/) and deployed on Netlify.
+[Hugo](https://gohugo.io/) and deployed on GitHub Pages.
 
 ## Tasks
 
 * `pixi run dev`: Local server with drafts at http://localhost:1313.
 * `pixi run public`: Production build into `public/`.
 * `pixi run clean`: Remove `public/`.
+
+## Deployment
+
+CI builds with `pixi`, using the pinned versions in `pixi.lock`.
+
+To look at a PR's build, download its `site` artifact from the workflow run, unzip it, and serve the directory (`python -m http.server`). It is built with relative URLs so it works standalone.
 
 ## Data
 
