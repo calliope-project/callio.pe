@@ -1,0 +1,36 @@
+name: Build PR
+
+on:
+  pull_request:
+    branches: [main]
+
+# Read-only and secret-free, so this is safe to run on pull requests from forks.
+permissions:
+  contents: read
+
+concurrency: # a new push to the PR supersedes the build in flight
+  group: pr-build-${{ github.event.number }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+      - uses: prefix-dev/setup-pixi@a09b6247153796b190642a2b53fac4241043cf6f # v0.10.0
+        with:
+          locked: true # honor committed pixi.lock, so CI uses the pinned Hugo
+      # --buildFuture renders news posts dated ahead of today, which is how the
+      # old Netlify deploy previews behaved. HUGO_RELATIVEURLS is load-bearing
+      # (and has no CLI flag equivalent): without it the build bakes in
+      # absolute https://www.callio.pe/ URLs, and an unzipped copy would pull
+      # its assets from the live site -- looking fine even when the PR broke
+      # them.
+      - run: pixi run hugo --minify --buildFuture
+        env:
+          HUGO_RELATIVEURLS: "true"
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: site
+          path: public
+          retention-days: 14

@@ -41,6 +41,24 @@ params:
     - repo: calliope-project/calliope
       ref: HEAD
 
+  # Retired URLs kept alive for inbound links. Matched as prefixes by
+  # layouts/partials/legacy-redirects.html, which runs on the 404 page.
+  legacyRedirects:
+    - from: /research/
+      to: /#showcase
+    - from: /support/
+      to: /#join
+    - from: /partners-and-team/
+      to: /#partners
+    - from: /publications/
+      to: /#showcase
+    - from: /models/
+      to: /#showcase
+    - from: /model-gallery/
+      to: /#showcase
+    - from: /development/
+      to: /#join
+
 outputs:
   home: ["HTML"] # Default includes RSS
   section: ["HTML", "RSS"]
